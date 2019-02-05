@@ -1,0 +1,22 @@
+{
+  "name": "battleship_game",
+  "version": "1.0.0",
+  "description": "basic battleship game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sean-a-kuhn/Battleship_Game.git"
+  },
+  "author": "Sean A. Kuhn, Nicole K. Clements",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sean-a-kuhn/Battleship_Game/issues"
+  },
+  "homepage": "https://github.com/sean-a-kuhn/Battleship_Game#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0"
+  }
+}
