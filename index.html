@@ -10,49 +10,18 @@
     <title>Battleship_Game</title>
 </head>
 <body>
-
-   <div class="strikeBox">
-      <tr class="colNums">
-         <th>0</th>
-         <th>1</th>
-         <th>2</th>
-         <th>3</th>
-         <th>4</th>
-         <th>5</th>
-         <th>6</th>
-         <th>7</th>
-         <th>8</th>
-         <th>9</th>
-         <th>10</th>
-      </tr>
-      <br>
-      <tr><td>A</td></tr><br>
-      <tr><td>B</td></tr><br>
-      <tr><td>C</td></tr><br>
-      <tr><td>D</td></tr><br>
-      <tr><td>E</td></tr><br>
-      <tr><td>F</td></tr><br>
-      <tr><td>G</td></tr><br>
-      <tr><td>H</td></tr><br>
-      <tr><td>I</td></tr><br>
-      <tr><td>J</td></tr><br>
-      
+   <button class="btn-lg center-block buildButton">build</button>
+   <div class="gameBoard container">
+      <div class="row no-gutters colHeadings"></div>
+      <div class="row no-gutters grid"></div>     
    </div>
-   <div class="grid">
-      <div class="cell" id=""></div>
-   </div>
-   <div class="shipsBox hidden">
+   
+   <div class="shipsBox hidden"></div></div>
 
-   </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<!-- bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- firebase -->
-<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-<!-- game script -->
-<script src="assets/js/game.js"></script>
-</body>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="assets/js/game.js"></script>
 </html>
