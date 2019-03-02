@@ -34,3 +34,11 @@
    height: 5vw;
    max-height: 40px;
 }
+
+.gridCell {
+   border: 1px solid white;
+}
+
+.target {
+   background-color: chartreuse;
+}

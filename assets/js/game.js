@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 // game logic contained in object 'battleShip'
 var battleShip = {
 
@@ -24,17 +26,20 @@ var battleShip = {
 
          for (var j=0; j<10; j++) {
 
-            var addCell = $('<div class="col-xs-1 cell"></div>');
+            var addCell = $('<div class="col-xs-1 gridCell cell"></div>');
             $(".grid").append(addCell);
 
             // Assign numerical id to each gridBox.
             var id = battleShip.convertNumberToLetter(i+1) + (j+1);
             addCell.attr('id', id);
          }
+
+         // add row heading at end of row
+         var headingLabel = battleShip.convertNumberToLetter(i+1);
+         var addRowHeading = $('<div class="col-xs-1 rowHeading cell">' + headingLabel + '</div>');
+         $(".grid").append(addRowHeading);
          // bootstrap 4 element to create break between rows
-         var addSpacer = $('<div class="col-xs-1 rowHeading cell"></div>')
          var addBreak = $('<div class="col w-100"></div>');
-         $(".grid").append(addSpacer);
          $(".grid").append(addBreak);
       }
    },
@@ -75,8 +80,19 @@ var battleShip = {
          default:
             return '';
       }
+   },
+
+   highlightTarget: function () {
+      $(this).addClass("target");
+   },
+
+   removeHighlight: function () {
+      $(this).removeClass("target");
    }
-   
 }
 
 $(".buildButton").click(battleShip.buildGrid);
+$(".grid").on("mouseenter", ".gridCell", battleShip.highlightTarget);
+$(".grid").on("mouseleave", ".gridCell", battleShip.removeHighlight);
+
+});
