@@ -1,8 +1,33 @@
 $(document).ready(function(){
 
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyA6RscDIpg1oaenBiItz7UDvCSqbv-JJH8",
+authDomain: "battleship-game-c8eb8.firebaseapp.com",
+databaseURL: "https://battleship-game-c8eb8.firebaseio.com",
+projectId: "battleship-game-c8eb8",
+storageBucket: "battleship-game-c8eb8.appspot.com",
+messagingSenderId: "91898474036"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
 // game logic contained in object 'battleShip'
 var battleShip = {
-
+   //variables
+   player: 0,
+   shipsHit: [], //hits on own grid
+   shipsAll: [],
+   shipAir: [], //5
+   shipBat: [], //4
+   shipDes: [], //3
+   shipSub: [], //3
+   shipPatBoat: [], //2
+   targetsHit: [], //offensive hits
+   targetsMissed: [], //offensive misses
+   wins: 0,
+   losses: 0,
+   
    // function to populate grid with cells; id's match grid location
    buildGrid: function () {
 
