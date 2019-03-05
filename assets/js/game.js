@@ -1,4 +1,3 @@
-$(document).ready(function(){
 
 // Initialize Firebase
 var config = {
@@ -7,11 +6,33 @@ authDomain: "battleship-game-c8eb8.firebaseapp.com",
 databaseURL: "https://battleship-game-c8eb8.firebaseio.com",
 projectId: "battleship-game-c8eb8",
 storageBucket: "battleship-game-c8eb8.appspot.com",
-messagingSenderId: "91898474036"
+//messagingSenderId: "91898474036"
 };
 firebase.initializeApp(config);
 
+// object to reference firebase db
 var database = firebase.database();
+
+// build database record for player
+// generate UUID for player record
+var playerId = uuidv1();
+
+// commenting this out so it doesn't keep making records in firebase while testing
+/*
+database.ref("Player/"+playerId).set({
+   id: playerId,
+   shipsAll: ["A1", "A2", "A3", "A4", "A5"], //All coordinates occupied by player's ships
+   shipsHit: [], //Damaged ship coordinates
+   shipAir: [], //Aircraft carrier coordinates
+   shipBat: [], //Battleship coordinates
+   shipDes: [], //Destroyer coordinates
+   shipSub: [], //Submarine coordinates
+   shipPatBoat: [], //Patrol Boat coordinates
+   targetsHit: [], //offensive strikes
+   targetsMissed: [] //offensive misses
+});
+*/
+
 // game logic contained in object 'battleShip'
 var battleShip = {
    //variables
@@ -113,11 +134,16 @@ var battleShip = {
 
    removeHighlight: function () {
       $(this).removeClass("target");
+   },
+   
+   // function to test click event assignment, element ID reference, and UUID generation
+   alertIdAndUUID: function () {
+      alert("This is cell " + this.id + "\nUUID: " + uuidv1());
    }
+
 }
 
 $(".buildButton").click(battleShip.buildGrid);
 $(".grid").on("mouseenter", ".gridCell", battleShip.highlightTarget);
 $(".grid").on("mouseleave", ".gridCell", battleShip.removeHighlight);
-
-});
+$(".grid").on("click", ".gridCell", battleShip.alertIdAndUUID);
