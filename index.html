@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=">
-    <title>Battleship_Game</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <!--
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   -->
+   <link rel="stylesheet" href="assets/css/style.css">
+   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=">
+   <title>Battleship_Game</title>
 </head>
 <body>
    <button class="btn-lg center-block buildButton">build</button>
@@ -16,6 +20,31 @@
       <div class="row no-gutters grid"></div>
       <div class="row no-gutters colHeadings"></div>     
    </div>
+   <br>
+   <!-- radios to select ships and ship orientation for placement, also radios to toggle between ships board and target board-->
+   <div class="container shipSelect hidden">
+      <div class="row no-gutters">
+         <div class="col-sm-6">
+            <form>
+               <input type="radio" class="radioBtn" name="ship" value="shipAir"> 5 - Aircraft Carrier<br>
+               <input type="radio" class="radioBtn" name="ship" value="shipBat"> 4 - Battleship<br>
+               <input type="radio" class="radioBtn" name="ship" value="shipSub"> 3 - Submarine<br>
+               <input type="radio" class="radioBtn" name="ship" value="shipDes"> 3 - Destroyer<br>
+               <input type="radio" class="radioBtn" name="ship" value="shipPtrl"> 2 - Patrol Boat<br>
+            </form>
+         </div>
+         <div class="col-sm-6">
+            <form>
+               <input type="radio" class="radioBtn" name="orientation" value="vertical"> vertical<br>
+               <input type="radio" class="radioBtn" name="orientation" value="horizontal"> horizontal<br>
+               <br>
+               <input type="radio" class="radioBtn" name="board" value="ships"> ships<br>
+               <input type="radio" class="radioBtn" name="board" value="target"> target<br>
+            </form>
+         </div>         
+      </div>
+   </div>
+   
    
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>

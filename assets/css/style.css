@@ -42,3 +42,11 @@
 .target {
    background-color: chartreuse;
 }
+
+.shipSelect {
+   width: 100vw;
+   max-width: 480px;
+   height: auto;
+   max-height: 240px;
+   border: 1px solid black;
+}

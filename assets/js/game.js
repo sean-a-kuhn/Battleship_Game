@@ -1,5 +1,9 @@
 
+//imports
+// const uuidv1 = require('uuid/v1'); // will need this statement when running on node.js; remove <script> tag referencing uuid
+
 // Initialize Firebase
+
 var config = {
 apiKey: "AIzaSyA6RscDIpg1oaenBiItz7UDvCSqbv-JJH8",
 authDomain: "battleship-game-c8eb8.firebaseapp.com",
@@ -27,7 +31,7 @@ database.ref("Player/"+playerId).set({
    shipBat: [], //Battleship coordinates
    shipDes: [], //Destroyer coordinates
    shipSub: [], //Submarine coordinates
-   shipPatBoat: [], //Patrol Boat coordinates
+   shipPtrl: [], //Patrol Boat coordinates
    targetsHit: [], //offensive strikes
    targetsMissed: [] //offensive misses
 });
@@ -43,7 +47,7 @@ var battleShip = {
    shipBat: [], //4
    shipDes: [], //3
    shipSub: [], //3
-   shipPatBoat: [], //2
+   shipPtrl: [], //2
    targetsHit: [], //offensive hits
    targetsMissed: [], //offensive misses
    wins: 0,
@@ -88,6 +92,10 @@ var battleShip = {
          var addBreak = $('<div class="col w-100"></div>');
          $(".grid").append(addBreak);
       }
+
+      // deselect radio buttons and show ship selector menu
+      battleShip.resetRadio();
+      battleShip.toggleShipSelect();
    },
 
    // function to return letter A-J given a number 1-10; return -1 if num<1 or num>10
@@ -135,15 +143,36 @@ var battleShip = {
    removeHighlight: function () {
       $(this).removeClass("target");
    },
+
+   // function to clear radio button selections
+   resetRadio: function () {
+      $(".radioBtn").prop("checked", false);
+      // default radio selections
+      $("input[value='shipAir']").prop("checked", true);
+      $("input[value='vertical']").prop("checked", true);
+      $("input[value='ships']").prop("checked", true);
+   },
+
+   // function to show/hide ship selector menu
+   toggleShipSelect: function () {
+      if ($(".shipSelect").hasClass("hidden")) {
+         $(".shipSelect").removeClass("hidden");
+      }
+      else {
+         $(".shipSelect").addClass("hidden");
+      } 
+   },
    
    // function to test click event assignment, element ID reference, and UUID generation
    alertIdAndUUID: function () {
       alert("This is cell " + this.id + "\nUUID: " + uuidv1());
    }
 
-}
+};
 
-$(".buildButton").click(battleShip.buildGrid);
-$(".grid").on("mouseenter", ".gridCell", battleShip.highlightTarget);
-$(".grid").on("mouseleave", ".gridCell", battleShip.removeHighlight);
-$(".grid").on("click", ".gridCell", battleShip.alertIdAndUUID);
+$(document).ready( function() {
+   $(".buildButton").click(battleShip.buildGrid);
+   $(".grid").on("mouseenter", ".gridCell", battleShip.highlightTarget);
+   $(".grid").on("mouseleave", ".gridCell", battleShip.removeHighlight);
+   $(".grid").on("click", ".gridCell", battleShip.alertIdAndUUID);
+});

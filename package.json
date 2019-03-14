@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sean-a-kuhn/Battleship_Game#readme",
   "dependencies": {
-    "dotenv": "^6.2.0"
+    "dotenv": "^6.2.0",
+    "uuid": "^3.3.2"
   }
 }
