@@ -52,9 +52,14 @@ var battleShip = {
    targetsMissed: [], //offensive misses
    wins: 0,
    losses: 0,
+   currentBoard: "ships", // value is "ships" or "targets", indicating which board is active--defense or offense
+   gameMode: "setup", // value is "setup" or "live", indicating if player is setting up board or if game has started
    
    // function to populate grid with cells; id's match grid location
    buildGrid: function () {
+
+      //hide build button
+      $(".buildButton").addClass("hide");
 
       // loop to build column headings
       for (var i=0; i<12; i++) {
@@ -136,12 +141,42 @@ var battleShip = {
       }
    },
 
-   highlightTarget: function () {
-      $(this).addClass("target");
+   // function to add cell coloring class to gridCell
+   highlightCell: function () {
+      if (battleShip.currentBoard==="ships") {
+         if (battleShip.gameMode==="setup") {
+            battleShip.highlightCellsByShip(this);
+         }
+      }
+      else {
+         $(this).addClass("target");
+      }
    },
 
+   // function to show player where ship will be placed
+   highlightCellsByShip: function (element) {
+      // need to add highlight to other ship cells, based on what ship is selected
+      // will probably need new array variable indicating cells where ship will be placed
+      $(element).addClass("cellShipOpt");
+   },
+
+   // function to remove cell coloring class to gridCell
    removeHighlight: function () {
-      $(this).removeClass("target");
+      if (battleShip.currentBoard==="ships") {
+         if (battleShip.gameMode==="setup") {
+            battleShip.removeHighlightByShip(this);
+         }
+      }
+      else {
+         $(this).removeClass("target");
+      }
+   },
+
+   // function to remove highlights on cells showing where ship will be placed
+   removeHighlightByShip: function (element) {
+      // need to incorporate loop that removes class from all cells indicating where ship will be placed
+      // will probably need new array variable indicating cells where ship will be placed
+      $(element).removeClass("cellShipOpt");
    },
 
    // function to clear radio button selections
@@ -162,6 +197,17 @@ var battleShip = {
          $(".shipSelect").addClass("hidden");
       } 
    },
+
+   // function to switch between ships board and targets board
+   toggleBoard: function () {
+      battleShip.currentBoard = this.value;
+   },
+
+   // function to place ship on board: make gridCells gray, identify gridCell IDs to populate shipsAll and ship___ arrays
+   placeShip: function () {
+
+   },
+
    
    // function to test click event assignment, element ID reference, and UUID generation
    alertIdAndUUID: function () {
@@ -172,7 +218,8 @@ var battleShip = {
 
 $(document).ready( function() {
    $(".buildButton").click(battleShip.buildGrid);
-   $(".grid").on("mouseenter", ".gridCell", battleShip.highlightTarget);
+   $("input[name='board']").on("click", battleShip.toggleBoard);
+   $(".grid").on("mouseenter", ".gridCell", battleShip.highlightCell);
    $(".grid").on("mouseleave", ".gridCell", battleShip.removeHighlight);
    $(".grid").on("click", ".gridCell", battleShip.alertIdAndUUID);
 });
